@@ -23,12 +23,15 @@
             android:ems="10"
             android:inputType="number" />
 
-        <EditText
+        <TextView
             android:id="@+id/etCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="category"
             android:inputType="number" />
     </LinearLayout>
 

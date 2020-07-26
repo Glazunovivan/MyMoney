@@ -2,8 +2,10 @@ package glazunov.application.aplicationcost;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,9 @@ public class ActivityPlus extends AppCompatActivity {
     private  EditText edit_plus;
     private int myBalance = 0, plus = 0;
     private Button bAdd;
+
+    //для работы с BD
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,10 @@ public class ActivityPlus extends AppCompatActivity {
         plus = Integer.parseInt(edit_plus.getText().toString());
         myBalance += plus;
 
+        //database
+        DBHelper db = new DBHelper(ActivityPlus.this);
+        db.addIncome(plus);
+
         //обновляем доход
         sharedPreferences = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
         plus += sharedPreferences.getInt("Plus", 0);
@@ -44,6 +53,8 @@ public class ActivityPlus extends AppCompatActivity {
         SharedPreferences.Editor ed = sharedPreferences.edit();
         ed.putInt("MyBalance", myBalance).apply();
         ed.putInt("Plus", plus).apply();
+
+
     }
 
     public void click_btnOk(View v){

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ActivityMinus extends AppCompatActivity {
 
@@ -15,7 +16,9 @@ public class ActivityMinus extends AppCompatActivity {
 
     private Button btnMinus;
     private EditText etSum;
+    private TextView etCategory;
     private int balance = 0, minus = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,16 +26,36 @@ public class ActivityMinus extends AppCompatActivity {
         setContentView(R.layout.activity_minus);
 
         etSum = (EditText)findViewById(R.id.etMinus);
-        //btnMinus = (Button)findViewById(R.id.btnMinus);
+        etCategory = findViewById(R.id.etCategory);
+
+        Bundle arguments = getIntent().getExtras();
+        String categoryType = arguments.get("CategoryExpense").toString();
 
         //получаем данные
         sPref = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
         balance = sPref.getInt("MyBalance", 0);
+
+        if(categoryType == "Car"){
+            etCategory.setText("Транспортное средство");
+        }
+        else if(categoryType == "Home"){
+            etCategory.setText("Домашние расходы");
+        }
+        else if(categoryType == "Basket"){
+            etCategory.setText("Покупки");
+        }
+        else if(categoryType == "NONE"){
+            etCategory.setText("Другое");
+        }
     }
 
     private void saveData(){
         minus = Integer.parseInt(etSum.getText().toString());
         balance -= minus;
+
+        //add DB
+        DBHelper db = new DBHelper(ActivityMinus.this);
+        db.addExpense(etCategory.getText().toString(), minus);
 
         //обновляем расход
         minus += sPref.getInt("Minus", 0);
