@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,13 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView balance,plus,minus;
     private int i_balance, i_plus, i_minus;
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor ed;
 
     RecyclerView recyclerView;
     DBHelper dbHelper;
     ArrayList<String> dbIncome, dbIncomeType, dbExpense;
-    CustomAdapter customAdapter;
+    //CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,22 +64,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LoadData();
 
         dbHelper = new DBHelper(MainActivity.this);
-        dbIncome = new ArrayList<>();
+        /*dbIncome = new ArrayList<>();
         dbIncomeType = new ArrayList<>();
-        dbExpense = new ArrayList<>();
+        dbExpense = new ArrayList<>();*/
 
-        displayDataFromDB();
+        //displayDataFromDB();
 
-        customAdapter = new CustomAdapter(MainActivity.this, dbIncome, dbIncomeType);
-        recyclerView.setAdapter(customAdapter);
+        /*customAdapter = new CustomAdapter(MainActivity.this, dbIncome, dbIncomeType);
+        recyclerView.setAdapter(customAdapter);*/
 
         LinearLayoutManager lManager = new LinearLayoutManager(this);
         lManager.setReverseLayout(true);
         lManager.setStackFromEnd(true);
 
         //recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        recyclerView.setLayoutManager(lManager);
+        //recyclerView.setLayoutManager(lManager);
 
+        tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
+        viewPager = (ViewPager)findViewById(R.id.viepager_id);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPagerAdapter.AddFragment(new FragmentIncome(), "доходы");
+        viewPagerAdapter.AddFragment(new FragmentExpense(), "расходы");
+
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -106,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent;
+        String str;
         saveData();
         switch (v.getId()){
             case R.id.cardPlus:
@@ -113,42 +130,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.cardMinus:
+                intent = new Intent(MainActivity.this, ActivityMinus.class);
+                intent.putExtra("category", "NONE");
+                startActivity(intent);
+                break;
             case R.id.cardCar:
+                intent = new Intent(MainActivity.this, ActivityMinus.class);
+                str = "Car";
+                intent.putExtra("category", str);
+                startActivity(intent);
+                break;
             case R.id.cardBasket:
+                intent = new Intent(MainActivity.this, ActivityMinus.class);
+                str = "Basket";
+                intent.putExtra("category", str);
+                startActivity(intent);
+                break;
             case R.id.cardHome:
                 intent = new Intent(MainActivity.this, ActivityMinus.class);
-                //передать имя карточки, чтобы определить категорию
-                if(v.getId() == R.id.cardCar){
-                    intent.putExtra("CategoryExpense", "Car");
-                }
-                if(v.getId() == R.id.cardBasket){
-                    intent.putExtra("CategoryExpense", "Basket");
-                }
-                if(v.getId() == R.id.cardHome){
-                    intent.putExtra("CategoryExpense", "Home");
-                }
-                else{
-                    intent.putExtra("CategoryExpense", "NONE");
-                }
+                str = "Home";
+                intent.putExtra("category", str);
                 startActivity(intent);
                 break;
             default: break;
         }
     }
 
-    void displayDataFromDB(){
+    /*void displayDataFromDB(){
         Cursor cursor = dbHelper.readIncomeData();
-        if(cursor.getCount() == 0){
-            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
-        }else{
+        if(cursor.getCount() != 0){
             while(cursor.moveToNext()){
                 dbIncome.add(cursor.getString(0));
                 dbIncomeType.add(cursor.getString(1));
             }
         }
-        /*Cursor cursor1 = dbHelper.readExpenseData();
+        Cursor cursor1 = dbHelper.readExpenseData();
         if(cursor1.getCount() != 0){
             while(cursor1.moveToNext()) dbExpense.add(cursor1.getString(0));
-        }*/
-    }
+        }
+    }*/
 }

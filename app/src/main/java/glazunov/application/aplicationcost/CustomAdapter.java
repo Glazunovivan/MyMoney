@@ -14,8 +14,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CostViewHolder>{
 
     private Context context;
-    private ArrayList incomeDB, incomeDBType;
-
+    private ArrayList income_count, income_category;
 
     public class CostViewHolder extends RecyclerView.ViewHolder {
         TextView incomeDB_txt, incomeType_txt;
@@ -27,12 +26,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CostViewHo
             incomeType_txt = itemView.findViewById(R.id.txt_income_type);
         }
     }
-
     //и это конструктор, но для адаптера
-    CustomAdapter(Context context, ArrayList incomeDB, ArrayList incomeDBType) {
+    CustomAdapter(Context context, ArrayList income_count, ArrayList income_category) {
         this.context = context;
-        this.incomeDB = incomeDB;
-        this.incomeDBType = incomeDBType;
+        this.income_count = income_count;
+        this.income_category = income_category;
     }
 
 
@@ -46,19 +44,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CostViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CostViewHolder holder, int position) {
-        holder.incomeDB_txt.setText(String.valueOf(incomeDB.get(position)));
-        holder.incomeType_txt.setText(String.valueOf(incomeDBType.get(position)));
+        holder.incomeDB_txt.setText(String.valueOf(income_count.get(position)));
+        holder.incomeType_txt.setText(String.valueOf(income_category.get(position)));
     }
 
-    /*
+    @Override
+    public int getItemCount() {
+        return income_count.size();
+    }
+
+        /*
      public void bindView(View view, Context context, Cursor cursor){
        textView name = (TextView)view.findViewById(R.id.name);
        name.setText(cursor.getString(cursor.getColumnIndex("name")));
 
      }*/
-
-    @Override
-    public int getItemCount() {
-        return incomeDB.size();
-    }
 }

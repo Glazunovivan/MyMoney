@@ -53,7 +53,9 @@
             android:id="@+id/cardPlus"
             android:layout_width="185dp"
             android:layout_height="120dp"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -89,7 +91,9 @@
             android:id="@+id/cardMinus"
             android:layout_width="185dp"
             android:layout_height="120dp"
-            android:layout_margin="5dp">
+            android:layout_margin="5dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -137,7 +141,9 @@
                 android:id="@+id/cardCar"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -162,7 +168,9 @@
                 android:id="@+id/cardHome"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -187,7 +195,9 @@
                 android:id="@+id/cardBasket"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -210,6 +220,20 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:layout_marginTop="5dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/grey"
+        android:id="@+id/tablayout_id">
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viepager_id">
+    </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
         android:layout_width="match_parent"

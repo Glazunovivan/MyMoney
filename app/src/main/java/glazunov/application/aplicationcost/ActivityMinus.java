@@ -26,25 +26,25 @@ public class ActivityMinus extends AppCompatActivity {
         setContentView(R.layout.activity_minus);
 
         etSum = (EditText)findViewById(R.id.etMinus);
-        etCategory = findViewById(R.id.etCategory);
-
-        Bundle arguments = getIntent().getExtras();
-        String categoryType = arguments.get("CategoryExpense").toString();
+        etCategory = (TextView)findViewById(R.id.etCategory);
 
         //получаем данные
         sPref = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
         balance = sPref.getInt("MyBalance", 0);
 
-        if(categoryType == "Car"){
+        Bundle arguments = getIntent().getExtras();
+        String categoryType = arguments.getString("category");
+
+        if(categoryType.equals("Car")){
             etCategory.setText("Транспортное средство");
         }
-        else if(categoryType == "Home"){
+        else if(categoryType.equals("Home")){
             etCategory.setText("Домашние расходы");
         }
-        else if(categoryType == "Basket"){
+        else if(categoryType.equals("Basket")){
             etCategory.setText("Покупки");
         }
-        else if(categoryType == "NONE"){
+        else if(categoryType.equals("NONE")){
             etCategory.setText("Другое");
         }
     }

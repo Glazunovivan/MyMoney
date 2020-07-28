@@ -12,10 +12,10 @@ public class DBHelper extends SQLiteOpenHelper {
     Context context;
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "SPENDING";
-    private static final String TABLE_EXPENSE = "SPENDING";
+    private static final String TABLE_EXPENSE = "EXPENSE";
     private static final String TABLE_INCOME = "INCOME";
 
-    private static final String INCOME = "income";
+    private static final String INCOME_TYPE = "income_type";
     private static final String INCOME_COUNT = "income_count";
     private static final String EXPENSE_TYPE = "expense_type";
     private static final String EXPENSE_COUNT = "expense_count";
@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //таблица дохода
         db.execSQL("create table " + TABLE_INCOME +
                 "(" + COLUMN_ID + " integer primary key autoincrement, " +
-                INCOME + " text, " +
+                INCOME_TYPE + " text, " +
                 INCOME_COUNT + " integer not null" + ");");
     }
 
@@ -53,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(INCOME, "Зарплата");
+        cv.put(INCOME_TYPE, "Зарплата");
         cv.put(INCOME_COUNT, count);
         //добавить дату
 
@@ -73,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     Cursor readIncomeData(){
-        String query = "SELECT " + INCOME_COUNT + ","+ INCOME + " FROM " + TABLE_INCOME;
+        String query = "SELECT " + INCOME_COUNT + ","+ INCOME_TYPE + " FROM " + TABLE_INCOME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor  = null;
         if(db != null){
@@ -83,7 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     Cursor readExpenseData(){
-        String query = "SELECT " + EXPENSE_TYPE + "," + EXPENSE_COUNT + " FROM " + TABLE_EXPENSE;
+        String query = "SELECT " + EXPENSE_COUNT + "," + EXPENSE_TYPE + " FROM " + TABLE_EXPENSE;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor  = null;
