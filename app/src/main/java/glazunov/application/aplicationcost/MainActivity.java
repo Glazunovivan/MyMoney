@@ -31,12 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ViewPagerAdapter viewPagerAdapter;
 
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor ed;
 
-    RecyclerView recyclerView;
     DBHelper dbHelper;
-    ArrayList<String> dbIncome, dbIncomeType, dbExpense;
-    //CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         balance = (TextView)findViewById(R.id.balance);
         plus = (TextView)findViewById(R.id.plus);
         minus = (TextView)findViewById(R.id.minus);
-        recyclerView = (RecyclerView)findViewById(R.id.recycler_view_incomes);
 
         cardPlus = (CardView)findViewById(R.id.cardPlus);
         cardMinus = (CardView)findViewById(R.id.cardMinus);
@@ -155,18 +150,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default: break;
         }
     }
-
-    /*void displayDataFromDB(){
-        Cursor cursor = dbHelper.readIncomeData();
-        if(cursor.getCount() != 0){
-            while(cursor.moveToNext()){
-                dbIncome.add(cursor.getString(0));
-                dbIncomeType.add(cursor.getString(1));
-            }
-        }
-        Cursor cursor1 = dbHelper.readExpenseData();
-        if(cursor1.getCount() != 0){
-            while(cursor1.moveToNext()) dbExpense.add(cursor1.getString(0));
-        }
-    }*/
 }

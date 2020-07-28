@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_remove" />
-                            <entry key="sourceFile" value="D:\Projects\Android\Icons\sydney-opera-house.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_wallet" />
+                            <entry key="sourceFile" value="D:\Projects\Android\Icons\wallet.svg" />
                           </map>
                         </option>
                       </PersistentState>

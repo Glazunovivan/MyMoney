@@ -3,29 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ActivityPlus"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="horizontal"
-    android:gravity="center">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center">
 
     <EditText
         android:id="@+id/edit_plus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
         android:ems="10"
-        android:inputType="number" />
-
+        android:hint="@string/edit_incomes_count"
+        android:inputType="number"/>
+    <EditText
+        android:id="@+id/edit_incomes_category"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:ems="10"
+        android:hint="@string/edit_incomes_category"
+        android:inputType="text"/>
     <Button
         android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="250sp"
+        android:layout_height="50sp"
         android:background="@color/green"
         android:onClick="click_btnOk"
-        android:text="add"
+        android:text="+"
+        android:textSize="30sp"
         android:textColor="#fff" />
 
 </LinearLayout>

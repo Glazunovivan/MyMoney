@@ -60,6 +60,17 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_INCOME, null, cv);
     }
 
+    void addIncome(String category, int count){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(INCOME_TYPE, category);
+        cv.put(INCOME_COUNT, count);
+        //добавить дату
+
+        db.insert(TABLE_INCOME, null, cv);
+    }
+
     //расходы
      void addExpense(String category, int count){
          SQLiteDatabase db = this.getWritableDatabase();

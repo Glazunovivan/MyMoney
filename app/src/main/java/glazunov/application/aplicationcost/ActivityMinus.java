@@ -15,8 +15,8 @@ public class ActivityMinus extends AppCompatActivity {
     private SharedPreferences sPref;
 
     private Button btnMinus;
-    private EditText etSum;
-    private TextView etCategory;
+    private EditText etMinus, edit_text_expense_category;
+    //private TextView etCategory;
     private int balance = 0, minus = 0;
 
 
@@ -25,8 +25,9 @@ public class ActivityMinus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minus);
 
-        etSum = (EditText)findViewById(R.id.etMinus);
-        etCategory = (TextView)findViewById(R.id.etCategory);
+        etMinus = (EditText)findViewById(R.id.etMinus);
+        //etCategory = (TextView)findViewById(R.id.etCategory);
+        edit_text_expense_category = (EditText)findViewById(R.id.edit_expense_category);
 
         //получаем данные
         sPref = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
@@ -36,26 +37,29 @@ public class ActivityMinus extends AppCompatActivity {
         String categoryType = arguments.getString("category");
 
         if(categoryType.equals("Car")){
-            etCategory.setText("Транспортное средство");
+            //etCategory.setText("Транспорт");
+            edit_text_expense_category.setText("Транспорт");
         }
         else if(categoryType.equals("Home")){
-            etCategory.setText("Домашние расходы");
+            //etCategory.setText("Домашние расходы");
+            edit_text_expense_category.setText("Домашние расходы");
         }
         else if(categoryType.equals("Basket")){
-            etCategory.setText("Покупки");
+            //etCategory.setText("Покупки");
+            edit_text_expense_category.setText("Покупки");
         }
         else if(categoryType.equals("NONE")){
-            etCategory.setText("Другое");
+            //etCategory.setText("Другое");
         }
     }
 
     private void saveData(){
-        minus = Integer.parseInt(etSum.getText().toString());
+        minus = Integer.parseInt(etMinus.getText().toString());
         balance -= minus;
 
         //add DB
         DBHelper db = new DBHelper(ActivityMinus.this);
-        db.addExpense(etCategory.getText().toString(), minus);
+        db.addExpense(edit_text_expense_category.getText().toString(), minus);
 
         //обновляем расход
         minus += sPref.getInt("Minus", 0);

@@ -15,46 +15,51 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="12dp">
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:text="-"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:textColor="@color/red"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.52"/>
-            <TextView
-                android:id="@+id/text_view_expence_count"
+                android:src="@drawable/ic_remove"
+                android:layout_gravity="center"
+                android:tint="@color/red"></ImageView>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="100"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:textColor="@color/red"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.52"
-                android:gravity="center"/>
-            <TextView
-                android:id="@+id/text_view_category_expense"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="expense"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/red"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.52"
-                android:gravity="center"/>
+                android:orientation="vertical"
+                android:layout_marginLeft="10sp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/text_view_expence_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="руб"
+                        android:paddingLeft="5sp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_view_category_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="expense"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/red"
+                    android:gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

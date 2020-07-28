@@ -15,7 +15,7 @@ public class ActivityPlus extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
 
-    private  EditText edit_plus;
+    private  EditText edit_plus, edit_incomes_category;
     private int myBalance = 0, plus = 0;
     private Button bAdd;
 
@@ -28,6 +28,7 @@ public class ActivityPlus extends AppCompatActivity {
         setContentView(R.layout.activity_plus);
 
         edit_plus = (EditText)findViewById(R.id.edit_plus);
+        edit_incomes_category = (EditText)findViewById(R.id.edit_incomes_category);
 
         loadData();
     }
@@ -41,10 +42,10 @@ public class ActivityPlus extends AppCompatActivity {
     {
         plus = Integer.parseInt(edit_plus.getText().toString());
         myBalance += plus;
-
+        String category = edit_incomes_category.getText().toString();
         //database
         DBHelper db = new DBHelper(ActivityPlus.this);
-        db.addIncome(plus);
+        db.addIncome(category, plus);
 
         //обновляем доход
         sharedPreferences = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);

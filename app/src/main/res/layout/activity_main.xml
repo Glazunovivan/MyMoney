@@ -10,8 +10,8 @@
     android:background="#fff">
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_margin="5dp">
+            android:layout_height="115sp"
+            android:layout_margin="5sp">
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -23,24 +23,40 @@
             android:layout_gravity="center"
             android:orientation="vertical">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/balance"
             android:textAllCaps="true"
             android:textColor="#fff"
             android:textStyle="bold"
-            android:textSize="35dp"></TextView>
-            <TextView
-                android:id="@+id/balance"
-                android:layout_width="match_parent"
+            android:textSize="30sp"></TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="1900 руб"
-                android:textAllCaps="true"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="40dp"></TextView>
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <TextView
+                    android:id="@+id/balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1900"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:textSize="35dp"></TextView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="руб"
+                    android:paddingLeft="10sp"
+                    android:textAllCaps="true"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:textSize="30sp"></TextView>
+            </LinearLayout>
         </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -74,16 +90,31 @@
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:text="+"></TextView>
-                <TextView
-                    android:id="@+id/plus"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="40dp"
-                    android:textColor="#fff"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:text="500"></TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/plus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="#fff"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:text="500"></TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="#fff"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:paddingLeft="10sp"
+                        android:text="руб"></TextView>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -112,16 +143,32 @@
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:text="-"></TextView>
-                <TextView
-                    android:id="@+id/minus"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textSize="40dp"
-                    android:textColor="#fff"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:text="200"></TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/minus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="#fff"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:text="200"></TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="#fff"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        android:paddingLeft="10sp"
+                        android:text="руб"></TextView>
+                </LinearLayout>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
@@ -222,7 +269,7 @@
     </LinearLayout>
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="30sp"
+        android:layout_height="35sp"
         android:layout_marginTop="5dp"
         app:tabMode="fixed"
         app:tabGravity="fill"
@@ -234,15 +281,5 @@
         android:layout_height="match_parent"
         android:id="@+id/viepager_id">
     </androidx.viewpager.widget.ViewPager>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recycler_view_incomes">
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
 
 </LinearLayout>
