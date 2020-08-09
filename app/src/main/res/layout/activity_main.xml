@@ -9,8 +9,9 @@
     android:padding="10dp"
     android:background="#fff">
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardBalance"
             android:layout_width="match_parent"
-            android:layout_height="115sp"
+            android:layout_height="90sp"
             android:layout_margin="5sp">
             <View
                 android:layout_width="match_parent"
@@ -68,7 +69,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardPlus"
             android:layout_width="185dp"
-            android:layout_height="120dp"
+            android:layout_height="90sp"
             android:layout_margin="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
@@ -121,7 +122,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardMinus"
             android:layout_width="185dp"
-            android:layout_height="120dp"
+            android:layout_height="90sp"
             android:layout_margin="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
@@ -178,7 +179,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="15dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

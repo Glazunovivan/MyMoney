@@ -10,13 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ActivityMinus extends AppCompatActivity {
 
-    private SharedPreferences sPref;
+    //private SharedPreferences sPref;
 
     private Button btnMinus;
     private EditText etMinus, edit_text_expense_category;
-    //private TextView etCategory;
+    private TextView text_date;
+
     private int balance = 0, minus = 0;
 
 
@@ -26,12 +32,18 @@ public class ActivityMinus extends AppCompatActivity {
         setContentView(R.layout.activity_minus);
 
         etMinus = (EditText)findViewById(R.id.etMinus);
-        //etCategory = (TextView)findViewById(R.id.etCategory);
         edit_text_expense_category = (EditText)findViewById(R.id.edit_expense_category);
+        text_date = (TextView)findViewById(R.id.text_date_m);
+
+        Date currentDate = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        String dateText = dateFormat.format(currentDate);
+
+        text_date.setText(dateText);
 
         //получаем данные
-        sPref = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
-        balance = sPref.getInt("MyBalance", 0);
+        /*sPref = getSharedPreferences("MY_BALANCE", MODE_PRIVATE);
+        balance = sPref.getInt("MyBalance", 0);*/
 
         Bundle arguments = getIntent().getExtras();
         String categoryType = arguments.getString("category");
@@ -59,19 +71,15 @@ public class ActivityMinus extends AppCompatActivity {
 
         //add DB
         DBHelper db = new DBHelper(ActivityMinus.this);
-        db.addExpense(edit_text_expense_category.getText().toString(), minus);
+        String category = edit_text_expense_category.getText().toString();
 
-        //обновляем расход
-        minus += sPref.getInt("Minus", 0);
-
-        SharedPreferences.Editor editor = sPref.edit();
-        editor.putInt("Minus", minus).apply();
-        editor.putInt("MyBalance", balance).apply();
+        db.addExpense(category, minus, text_date.getText().toString());
     }
 
     public void clickMinus(View v){
         saveData();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

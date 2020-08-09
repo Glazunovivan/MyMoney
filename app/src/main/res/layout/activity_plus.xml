@@ -9,6 +9,16 @@
     android:gravity="center"
     android:layout_gravity="center">
 
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="curr.data.time"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"/>
+
     <EditText
         android:id="@+id/edit_plus"
         android:layout_width="250sp"
