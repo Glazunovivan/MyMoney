@@ -2,7 +2,13 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel_3a" />
+        <device id="pixel_2" />
+        <device id="Nexus 5X" />
+        <device id="pixel_3_xl" />
+        <device id="Nexus 6P" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
@@ -11,8 +17,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de8db2e2-a7f3-4e35-9061-2b6c6e6c4292" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_autorenew_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/app_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,31 +27,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ActivityMinus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ActivityMinus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ActivityPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ActivityPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/CustomAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/CustomAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ExpenseAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/ExpenseAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/FragmentExpense.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/FragmentExpense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/FragmentIncome.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/FragmentIncome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/glazunov/application/aplicationcost/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_minus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_minus.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_plus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_plus.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/expense_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/expense_row.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/incomes_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/incomes_row.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy_Nexus_API_24" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="R58M978LA9V" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -224,14 +216,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1920.1040/-1360.305.1360.728@0.0.1920.1040" timestamp="1594810328084" />
+    <state x="686" y="41" key="SettingsEditor" timestamp="1597256437159">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="686" y="41" key="SettingsEditor/0.0.1920.1040/-1360.305.1360.728@0.0.1920.1040" timestamp="1597256437159" />
     <state x="55" y="114" width="1641" height="801" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1596632959721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="55" y="114" width="1641" height="801" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1360.305.1360.728@0.0.1920.1040" timestamp="1596632959721" />
-    <state x="704" y="326" key="com.intellij.ide.util.TipDialog" timestamp="1597011203354">
+    <state x="704" y="326" key="com.intellij.ide.util.TipDialog" timestamp="1597256356918">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="704" y="326" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1360.305.1360.728@0.0.1920.1040" timestamp="1597011203354" />
+    <state x="704" y="326" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1360.305.1360.728@0.0.1920.1040" timestamp="1597256356918" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1594810328090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

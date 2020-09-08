@@ -20,11 +20,11 @@
                 android:id="@+id/text_date_expense_recycler_view"
                 android:layout_width="wrap_content"
                 android:layout_height="30sp"
-                android:text="data"
+                android:text="datе"
                 android:layout_gravity="center"
                 android:textColor = "@color/red"
                 android:textSize="20sp"
-                android:textStyle="italic"
+                android:textStyle=""
                 android:gravity="center"></TextView>
 
         <LinearLayout

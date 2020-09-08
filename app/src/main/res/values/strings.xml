@@ -6,4 +6,5 @@
     <string name="edit_incomes_category">Введите категорию дохода</string>
     <string name="edit_expense_count">Введите сумму расходов</string>
     <string name="edit_expense_category">Введите категорию расходов</string>
+    <string name="category">Быстрое добавление расходов</string>
 </resources>

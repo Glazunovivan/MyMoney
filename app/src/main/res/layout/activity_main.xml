@@ -70,7 +70,6 @@
             android:id="@+id/cardPlus"
             android:layout_width="185dp"
             android:layout_height="90sp"
-            android:layout_margin="5dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
             <View

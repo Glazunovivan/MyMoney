@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.BuddhistCalendar;
 import android.os.Bundle;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,13 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private CardView cardCar,cardHome,cardBasket,cardPlus, cardMinus, cardBalance;
     private TextView balance,plus,minus;
-    private int i_balance, i_plus, i_minus;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
-
-    //SharedPreferences sharedPreferences;
 
     DBHelper dbHelper;
 
@@ -45,6 +43,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //init item
+        initItem();
+
+        //loadData
+        dbHelper = new DBHelper(MainActivity.this);
+        LoadData();
+
+        LinearLayoutManager lManager = new LinearLayoutManager(this);
+        lManager.setReverseLayout(true);
+        lManager.setStackFromEnd(true);
+
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPagerAdapter.AddFragment(new FragmentIncome(), "доходы");
+        viewPagerAdapter.AddFragment(new FragmentExpense(), "расходы");
+
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+    }
+
+    private void initItem(){
         balance = (TextView)findViewById(R.id.balance);
         plus = (TextView)findViewById(R.id.plus);
         minus = (TextView)findViewById(R.id.minus);
@@ -67,39 +91,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        //удаляем таблицу с расходами
+        //delete data from EXPENSE
         cardMinus.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                //dbHelper.
-                ConfirmDialog();
+                confirmDialog(cardMinus);
                 return true;
             }
         });
+        //delete data from INCOME
         cardPlus.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Удалить все данные о доходах?");
-                builder.setMessage("Вы удалите все данные о доходах в Вашем приложении без возможности восстановления. Вы действительно хотите это сделать?");
-                builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        SQLiteDatabase db = dbHelper.getWritableDatabase();
-                        db.execSQL("DELETE FROM INCOME");
-                        //перезапуск активити
-                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        return;
-                    }
-                });
-                builder.create().show();
+                confirmDialog(cardPlus);
                 return true;
             }
         });
@@ -108,28 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardBasket.setOnClickListener(this);
         cardCar.setOnClickListener(this);
 
-        //loadData
-        dbHelper = new DBHelper(MainActivity.this);
-        LoadData();
-
-        LinearLayoutManager lManager = new LinearLayoutManager(this);
-        lManager.setReverseLayout(true);
-        lManager.setStackFromEnd(true);
-
         tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
         viewPager = (ViewPager)findViewById(R.id.viepager_id);
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        viewPagerAdapter.AddFragment(new FragmentIncome(), "доходы");
-        viewPagerAdapter.AddFragment(new FragmentExpense(), "расходы");
-
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
     }
 
     //загрузка данных
@@ -203,28 +187,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.create().show();
     }
 
-    void ConfirmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Удалить все данные о расходах?");
-        builder.setMessage("Вы удалите все данные о расходах в Вашем приложении без возможности восстановления. Вы действительно хотите это сделать?");
-        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                db.execSQL("DELETE FROM EXPENSE");
+    void confirmDialog(View v){
+        String title = "", message = "";
 
-                //перезапуск активити
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        switch (v.getId()){
+            case R.id.cardMinus:
+                title = "расходах";
+                message = "Вы удалите все данные о расходах в Вашем приложении без возможности восстановления. Вы действительно хотите это сделать?";
+                builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        db.execSQL("DELETE FROM EXPENSE");
+
+                        //перезапуск активити в любом случае
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                break;
+            case R.id.cardPlus:
+                title = "доходах";
+                message = "Вы удалите все данные о доходах в Вашем приложении без возможности восстановления. Вы действительно хотите это сделать?";
+                builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        db.execSQL("DELETE FROM INCOME");
+
+                        //перезапуск активити в любом случае
+                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+                break;
+        }
         builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 return;
             }
         });
+
+        builder.setTitle("Удалить все данные о " + title);
+        builder.setMessage(message);
         builder.create().show();
     }
 
